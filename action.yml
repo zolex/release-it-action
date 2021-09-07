@@ -2,8 +2,21 @@ name: 'Release it'
 description: 'Release it'
 inputs:
   github-token:
-    description: 'Github token to access the api'
+    description: Github token to pass to release-it
     required: true
+    default: ${{ github.token }}
+  github-username:
+    description: Set the Github username to use for creating/pushing updates.
+    required: true
+    default: ${{ github.actor }}
+  git-user-name:
+    description: Set the git users full name to use when release-it commits.
+    required: true
+    default: release-it
+  git-user-email:
+    description: Set the git email address to use when release-it commits.
+    required: true
+    default: release-it@coxautoinc.com
 outputs:
   version:
     description: 'The bumped version number'
@@ -12,4 +25,7 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.github-token }}
+    - ${{ inputs.github-username }}
+    - ${{ inputs.git-user-name }}
+    - ${{ inputs.git-user-email }}
 
