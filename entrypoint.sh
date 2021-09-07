@@ -9,6 +9,6 @@ git config --global user.name "$3"
 git config --global user.email "$4"
 
 export RELEASE_VERSION=$(release-it --release-version | tail -n1)
-release-it -VV --ci
+release-it -VV --ci || exit $?
 
 echo "::set-output name=version::$RELEASE_VERSION"
