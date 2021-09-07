@@ -1,0 +1,15 @@
+name: 'Release it'
+description: 'Release it'
+inputs:
+  github-token:
+    description: 'Github token to access the api'
+    required: true
+outputs:
+  version:
+    description: 'The bumped version number'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github-token }}
+
