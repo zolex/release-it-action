@@ -17,6 +17,9 @@ inputs:
     description: Set the git email address to use when release-it commits.
     required: true
     default: release-it@coxautoinc.com
+  pre-release:
+    description: If set, create a pre-release with the given type.
+    required: false
 outputs:
   version:
     description: 'The bumped version number'
@@ -28,4 +31,5 @@ runs:
     - ${{ inputs.github-username }}
     - ${{ inputs.git-user-name }}
     - ${{ inputs.git-user-email }}
+    - ${{ inputs.pre-release }}
 
